@@ -1,0 +1,108 @@
+{
+	"info": {
+		"_postman_id": "2b0ffd40-833b-456e-9eae-aefc1bd18ed4",
+		"name": "Toggl Decks",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/deck",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.globals.set(\"deck_id\",  pm.response.json().deck_id);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/deck",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"deck"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/deck/:deck_id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/deck/{{deck_id}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"deck",
+						"{{deck_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/deck/:deck_id/draw",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/deck/{{deck_id}}/draw?count=2",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"deck",
+						"{{deck_id}}",
+						"draw"
+					],
+					"query": [
+						{
+							"key": "count",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "localhost:80",
+			"type": "string"
+		}
+	]
+}
